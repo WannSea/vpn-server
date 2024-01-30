@@ -9,7 +9,7 @@ Currently there are 10 possible peers which are assigned as follows:
 |-------------|-------------------|
 | 10.13.13.1  | VPN Server Host   |
 | 10.13.13.2  | Main Raspberry Pi |
-| 130.13.13.3 | Kolja             |
+| 10.13.13.3 | Kolja             |
 | 10.13.13.4  | -                 |
 | 10.13.13.5  | -                 |
 | 10.13.13.6  | -                 |
