@@ -24,14 +24,18 @@ services:
     ports:
       - 51820:51820/udp
     networks:
-      - vpn
+      vpn:
+        ipv4_address: 172.67.0.2
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
+    entrypoint: ["/bin/bash", "-c", "ip route add 192.168.0.0/16 via 172.67.0.3 && /init"]
     restart: unless-stopped
 
   ipsec:
     image: hwdsl2/ipsec-vpn-server
     restart: always
+    cap_add:
+      - NET_ADMIN
     env_file:
       - /home/wannsea/ipsec/vpn.env
     ports:
@@ -43,9 +47,18 @@ services:
     volumes:
       - /home/wannsea/ipsec:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro
+    sysctls:
+      - net.ipv4.ip_forward=1
     networks:
-      - vpn
+      vpn:
+        ipv4_address: 172.67.0.3
+    entrypoint: ["/bin/bash", "-c", "ip route add 10.13.13.0/24 via 172.67.0.2 && /opt/src/run.sh"]
+
 networks:
   vpn:
     name: vpn
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.67.0.0/16
+          gateway: 172.67.0.1
