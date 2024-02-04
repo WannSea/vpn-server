@@ -52,8 +52,14 @@ services:
     networks:
       vpn:
         ipv4_address: 172.67.0.3
-    entrypoint: ["/bin/bash", "-c", "ip route add 10.13.13.0/24 via 172.67.0.2 && /opt/src/run.sh"]
-
+    entrypoint: 
+      - "/bin/bash"
+      - "-c"
+      - "ip route add 10.13.13.0/24 via 172.67.0.2 && "
+      - 'iptables -I FORWARD 2 -i "eth0" -o ppp+ -s 172.67.0.2 -j ACCEPT && '
+      - 'iptables -I FORWARD 2 -i "eth0" -d 192.168.43.0/24 -s 172.67.0.2 -j ACCEPT && '
+      - "/opt/src/run.sh"
+      
 networks:
   vpn:
     name: vpn
