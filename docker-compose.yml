@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.5"
 services:
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
@@ -19,10 +19,33 @@ services:
       - PERSISTENTKEEPALIVE_PEERS= #optional
       - LOG_CONFS=true #optional
     volumes:
-      - /home/wannsea/vpn:/config
+      - /home/wannsea/wireguard:/config
       - /lib/modules:/lib/modules #optional
     ports:
       - 51820:51820/udp
+    networks:
+      - vpn
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
+
+  ipsec:
+    image: hwdsl2/ipsec-vpn-server
+    restart: always
+    env_file:
+      - /home/wannsea/ipsec/vpn.env
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    privileged: true
+    hostname: ipsec-vpn-server
+    container_name: ipsec-vpn-server
+    volumes:
+      - /home/wannsea/ipsec:/etc/ipsec.d
+      - /lib/modules:/lib/modules:ro
+    networks:
+      - vpn
+networks:
+  vpn:
+    name: vpn
+    driver: bridge
