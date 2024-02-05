@@ -16,7 +16,7 @@ WireGuard does however need preconfigured peers which each get their own static 
 
 ## IPSec
 The IPSec variants are all a bit older but also more tested. IKEv2 is mostly similar to WireGuard, while L2TP and Cisco may disconnect sometimes when on an instable internet connection.
-The advantage is that you get allocated an IP dynamically and we can use a shared certificate (IKEv2) or username/password (L2TP/Cisco) for multiple connections.
+The advantage is that you get allocated an IP dynamically, so we are able to use a shared certificate (IKEv2) or username/password (L2TP/Cisco) for multiple connections.
 *Note: I read somewhere that L2TP may not work when being behind the same NAT, so this may be an issue when being on the same WiFi for example*
 
 ------
