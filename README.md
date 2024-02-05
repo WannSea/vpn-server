@@ -6,16 +6,20 @@ Due to the (presumably VPN-related) connection issues experienced in the 2023 se
 - IPSec (L2TP)
 - IPSec (Cisco)
 
+-------
+
 # What VPN to use
 ## WireGuard
 WireGuard is the newest and fastest VPN solution provided. However being new we experienced some weird connectivity issues (which needs to be tested regarding the other protocols).
 From my preliminary tests this has improved and mainly is due to the bad WireGuard client implementation of the Mac App Store version. Linux and HomeBrew clients work good from my point of view.
-WireGuard does however need preconfigured peers which each get their own static IP address and certificate. For transparency for all of our team members, if you decide to use WireGuard you may use it, but **UPDATE THIS README** and tell everyone which certificate is yours to avoid issues.
+WireGuard does however need preconfigured peers which each get their own static IP address and certificate. For transparency for all of our team members, if you decide to use WireGuard you may use it, but **UPDATE THIS README** and tell everyone which certificate is yours to avoid issues. An advantage/disadvantage is that WireGuard has no idea of a "connection"/"session". You may hav a completely interrupted connection but your client still says "connected". This helps during instable connectivity phases but also can be quite confusing in other scenarios where the VPN is causing connectivity issues.
 
 ## IPSec
 The IPSec variants are all a bit older but also more tested. IKEv2 is mostly similar to WireGuard, while L2TP and Cisco may disconnect sometimes when on an instable internet connection.
 The advantage is that you get allocated an IP dynamically and we can use a shared certificate (IKEv2) or username/password (L2TP/Cisco) for multiple connections.
 *Note: I read somewhere that L2TP may not work when being behind the same NAT, so this may be an issue when being on the same WiFi for example*
+
+------
 
 # Setup
 We store all the needed password/certificate information needed for connection in our WannSea password KeePass in the TubCloud. You can also look in ~/wireguard or ~/ipsec on our VPS directly but the Keepass has also some setup information.
@@ -47,6 +51,7 @@ Fortunately the IPSec server solution we use has an excellent connection guide f
 ### Cisco
 [Setup IPSec/Cisco Clients](https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-xauth.md)
 
+------
 
 # VPN IP Networks
 (Mostly) Each VPN Protocol has their own IP address range but **ARE** reachable via each other.
@@ -57,6 +62,8 @@ The networks are as follows:
 | IPSec/IKEv2 | 192.168.43.0/24   |
 | IPSec/L2TP  | 192.168.42.0/24   |
 | IPSec/Cisco | 192.168.43.0/24   |
+
+------
 
 # WireGuard IP Assignments
 Currently there are 10 possible peers which are assigned as follows:
