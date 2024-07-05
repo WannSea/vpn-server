@@ -77,7 +77,7 @@ Currently there are 10 possible peers which are assigned as follows:
 | 10.13.13.5  | Octoprint         |
 | 10.13.13.6  | Paul              |
 | 10.13.13.7  | Raspberry Pi 5    |
-| 10.13.13.8  | -                 |
+| 10.13.13.8  | Berg Berg         |
 | 10.13.13.9  | -                 |
 | 10.13.13.10 | -                 |
 
