@@ -79,6 +79,6 @@ Currently there are 10 possible peers which are assigned as follows:
 | 10.13.13.7  | Raspberry Pi 5         |
 | 10.13.13.8  | Berg Berg              |
 | 10.13.13.9  | WannSea Server (12core)|
-| 10.13.13.10 | -                      |
+| 10.13.13.10 | wannsea-docker VM      |
 
 If this list is exhausted contact @kkieslich or increase the `PEERS` env variable in the docker-compose.yml manually. You just need to edit and commit this file, the changes are automatically deployed by GitHub Actions!
