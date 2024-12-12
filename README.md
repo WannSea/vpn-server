@@ -74,11 +74,12 @@ Currently there are 10 possible peers which are assigned as follows:
 | 10.13.13.2  | RPi 4CM (Wi-Fi bridge) |
 | 10.13.13.3  | Kolja                  |
 | 10.13.13.4  | Felix                  |
-| 10.13.13.5  | Octoprint              |
+| 10.13.13.5  | ----------             |
 | 10.13.13.6  | Paul                   |
 | 10.13.13.7  | Raspberry Pi 5         |
 | 10.13.13.8  | Berg Berg              |
 | 10.13.13.9  | WannSea Server (12core)|
 | 10.13.13.10 | wannsea-docker VM      |
+| 10.13.13.11 | Octoprint in VM        |
 
 If this list is exhausted contact @kkieslich or increase the `PEERS` env variable in the docker-compose.yml manually. You just need to edit and commit this file, the changes are automatically deployed by GitHub Actions!
