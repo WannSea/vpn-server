@@ -74,7 +74,7 @@ Currently there are 10 possible peers which are assigned as follows:
 | 10.13.13.2  | RPi 4CM (Wi-Fi bridge) |
 | 10.13.13.3  | Kolja                  |
 | 10.13.13.4  | Felix                  |
-| 10.13.13.5  | ----------             |
+| 10.13.13.5  | Konstantin             |
 | 10.13.13.6  | Paul                   |
 | 10.13.13.7  | Raspberry Pi 5         |
 | 10.13.13.8  | Berg Berg              |
